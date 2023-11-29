@@ -1,2 +1,3 @@
-# ng-certification-tndsvl
-I have developed this weather application using Angular 
+# angular-certification
+
+[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/ng-certification)

@@ -1,0 +1,45 @@
+<div class="well">
+  <h2>Enter a zipcode:</h2>
+  <input class="form-control" placeholder="Zipcode" type="number" [formControl]="zipCode" />
+  <br />
+  <button class="btn btn-primary" id="addLocationBtn" (click)="onSubmit()">Add location</button>
+</div>
+<div *ngIf="weatherData.length>0">
+  <div class="well flex" *ngFor="let weather of weatherData; index as i;">
+    <div>
+      <h3>{{weather?.sys?.country}}({{weather?.zipCode}})</h3>
+
+      <table class="table table-dark">
+        <tbody>
+          <tr>
+            <th scope="row">Current conditions:</th>
+            <td>{{weather?.weather[0]?.description|titlecase}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Temperatures today:</th>
+            <th></th>
+          </tr>
+          <tr>
+            <th scope="row">Current</th>
+            <td>{{weather?.main.feels_like}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Maximum Temperature:</th>
+            <td>{{weather?.main.temp_max}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Minimum Temperature:</th>
+            <td>{{weather?.main.temp_min}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <a href="/forecast/{{weather?.zipCode}}">Show 5-day forecast for {{weather?.sys?.country}}</a>
+      </p>
+    </div>
+    <div>
+      <span class="close" (click)='hide(i)'>×</span>
+      <img src="https://www.angulartraining.com/images/weather/{{weather?.img}}.png">
+    </div>
+  </div>
+</div>
